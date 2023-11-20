@@ -22,8 +22,8 @@ MonoBehaviour:
   Height: 2
   ObstacleAvoidanceType: 2
   Radius: 0.5
-  Speed: 4.5
-  StoppingDistance: 1.5
+  Speed: 3
+  StoppingDistance: 2
   Prefab: {fileID: 1124524325609202809, guid: ac4d4984ab6e5dd41a5f569fbd90fe56, type: 3}
-  Chance: 70.8
-  _weight: 70.80000305175781
+  Chance: 79.9
+  _weight: 79.9000015258789

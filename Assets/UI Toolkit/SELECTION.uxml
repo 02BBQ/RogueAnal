@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Selection/SELECTION.uss?fileID=7433441132597879392&amp;guid=946aca0b51e8a834591b43dafd859d3d&amp;type=3#SELECTION" />
+    <ui:VisualElement name="container" style="flex-grow: 1; flex-direction: row; align-self: auto;">
+        <ui:VisualElement name="btn-row" style="flex-direction: row; align-items: center; align-self: auto; justify-content: center; width: 1917px;">
+            <ui:VisualElement name="selection1" class="bigger asdasd" style="flex-grow: 1;">
+                <ui:VisualElement name="label-container" style="flex-grow: 0; align-items: center;">
+                    <ui:Label tabindex="-1" text="앙" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ability-name1" style="background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255); font-size: 50px; align-items: stretch;" />
+                    <ui:Label tabindex="-1" text="ㅇㄴ" parse-escape-sequences="true" display-tooltip-when-elided="true" name="description1" class="labelStyle" style="color: rgb(255, 255, 255); white-space: normal; flex-shrink: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="selection2" class="bigger asdasd" style="flex-grow: 1;">
+                <ui:VisualElement name="label-container" style="flex-grow: 0; align-items: center;">
+                    <ui:Label tabindex="-1" text="박영준엄" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ability-name2" style="background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255); font-size: 50px;" />
+                    <ui:Label tabindex="-1" text="description here" parse-escape-sequences="true" display-tooltip-when-elided="true" name="description2" class="labelStyle" style="color: rgb(255, 255, 255); white-space: normal; flex-shrink: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="selection3" class="bigger asdasd" style="flex-grow: 1;">
+                <ui:VisualElement name="label-container" style="flex-grow: 0; align-items: center;">
+                    <ui:Label tabindex="-1" text="박영준엄" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ability-name3" style="background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255); font-size: 50px;" />
+                    <ui:Label tabindex="-1" text="description here" parse-escape-sequences="true" display-tooltip-when-elided="true" name="description3" class="labelStyle" style="color: rgb(255, 255, 255); white-space: normal; flex-shrink: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

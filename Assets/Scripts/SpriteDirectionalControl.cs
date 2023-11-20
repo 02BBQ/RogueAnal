@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpriteDirectionalControl : MonoBehaviour
 {
-    [SerializeField] float backAngle = 65f;
-    [SerializeField] float sideAngle = 155f;
+    //[SerializeField] float backAngle = 65f;
+    //[SerializeField] float sideAngle = 155f;
     [SerializeField] private Transform m_transform;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;

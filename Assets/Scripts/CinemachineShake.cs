@@ -20,7 +20,7 @@ public class CinemachineShake : MonoBehaviour
     {
         CinemachineBasicMultiChannelPerlin perlin = _cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
-        perlin.m_AmplitudeGain = intensity;
+        perlin.m_AmplitudeGain += intensity;
         shakeTimer = time;
     }
 

@@ -120,9 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1053775631901287440}
   enemySO: {fileID: 11400000, guid: 190d04060045f4a4eab4aaeb35c16e5f, type: 2}
-  MaxHealth: 0
+  Health: 3
   _weight: 0
   Chance: 100
+  Bullet: {fileID: 4693529029039513426, guid: c0b2aeb5403dbf447a4c3f42ec6bedf6, type: 3}
 --- !u!1 &1423132488087653878
 GameObject:
   m_ObjectHideFlags: 0

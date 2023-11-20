@@ -3,7 +3,12 @@ guid: df6dc84d18f46aa4e921d47c611c6a42
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - enemySO: {instanceID: 0}
+  - matSO: {fileID: 11400000, guid: 34807f4903d6da241bb9c5a666dda039, type: 2}
+  - defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - cum: {fileID: 2100000, guid: 0ca7469b0f780504e8039217b7afdf5c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

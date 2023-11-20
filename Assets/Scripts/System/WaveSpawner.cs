@@ -1,47 +1,45 @@
+using Assets.Scripts.PowerUp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
-//public class Enemy
-//{
-//    // for debug :
-//    public string Name;
-
-//    public GameObject Prefab;
-//    [Range(0f, 100f)] public float Chance = 100f;
-
-//    [HideInInspector] public double _weight;
-//}
-
-public class WaveSpawner : MonoBehaviour
+public class WaveSpawner : Singleton<WaveSpawner>
 {
     [SerializeField] private Transform spawner;
     private System.Random rand = new System.Random();
     private double accumulatedWeights;
-    private int maxAttempts = 10;
-
-    private float spawnAreaRadius = 50f; // 정해진 범위의 반지름
-    private float playerSafeRadius = 5f; // 플레이어 주변의 안전한 반지름
+    private int maxAttempts = 20;
+    
+    private float spawnAreaRadius = 11f; 
+    private float playerSafeRadius = 3.5f; 
 
     private Transform body;
+
+    public bool waitingForInput = false;
+    public bool teleport = false;
+
+    [SerializeField] private GameObject powerUp;
 
     [SerializeField] private EnemySO[] enemies;
 
     private int enemyCount = 2;
 
-    private void Awake()
-    {
-        CalculateWeights();
-    }
+    [SerializeField] GameObject spawnFX;
+
+    public UnityEvent Cleared;
+    public UnityEvent Black;
+    public UnityEvent PowerUped;
+
+    public int CurrentWave = 0;
+
     private void Start()
     {
-        //Enemy randomEnemy = enemies[GetRandomEnemyIndex()];
-        //StartWave();
+        CalculateWeights();
         body = Player.Instance.transform;
         StartWave();
     }
@@ -58,24 +56,50 @@ public class WaveSpawner : MonoBehaviour
 
         do
         {
-            // 정해진 범위 내에서 랜덤한 위치 선택
+            // get random pos on range
             float x = Random.Range(-spawnAreaRadius, spawnAreaRadius);
             float z = Random.Range(-spawnAreaRadius, spawnAreaRadius);
-            spawnPosition = new Vector3(x, 0, z + 25); // y 값을 0이나 다른 적절한 값으로 설정할 수 있습니다.
+            spawnPosition = new Vector3(x, 0.5f, z);
 
             currentAttempt++;
-            if (currentAttempt > maxAttempts) break; // 최대 시도 횟수를 초과하면 루프를 빠져나옵니다.
-        } while (Vector3.Distance(spawnPosition, body.position) < playerSafeRadius); // 플레이어 주변 반경 안에 있는지 확인
+            if (currentAttempt > maxAttempts) break; // break loop when did max attemp
+        } while (Vector3.Distance(spawnPosition, body.position) < playerSafeRadius); // check distance
         return spawnPosition;
     }
 
     IEnumerator DoWave()
     {
-        enemyCount += UnityEngine.Random.Range(1, 3);
+        while (waitingForInput)
+        {
+            yield return null; // waiting until player choose power buff
+        }
+
+        PoolManager.Get(powerUp, Player.Instance.transform.position,Quaternion.identity);
+        CinemachineShake.Instance.ShakeCamera(25, 1f);
+        Teleporter.Instance.gameObject.SetActive(true);
+        while (!teleport)
+        {
+            if (Input.GetKeyDown(KeyCode.F) && Teleporter.Instance.entered)
+            {
+                Teleporter.Instance.PressF?.Invoke();
+                break;
+            }
+            yield return null; // waiting until player choose power buff
+        }
+        teleport = false;
+        PowerUped?.Invoke();
+        Hades_Transition.Instance.targetValue = 1f;
+        yield return new WaitForSeconds(.5f);
+        Hades_Transition.Instance.targetValue = -.1f;
+        yield return new WaitForSeconds(.5f);
+        CurrentWave++;
+        enemyCount += Random.Range(1, 3);
         for (int i = 0; i < enemyCount; i++)
         {
             EnemySO randomEnemy = enemies[GetRandomEnemyIndex()];
             var enemyGO = PoolManager.Get(randomEnemy.Prefab, SpawnEnemyPosition(), Quaternion.identity,transform);
+            PoolManager.Get(spawnFX, enemyGO.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.05f);
         }
         yield return null;
     }
@@ -84,6 +108,8 @@ public class WaveSpawner : MonoBehaviour
     {
         if (transform.childCount <= 0)
         {
+            waitingForInput = true;
+            Cleared?.Invoke();
             StartCoroutine(DoWave());
         }
     }

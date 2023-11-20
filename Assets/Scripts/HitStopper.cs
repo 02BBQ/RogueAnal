@@ -1,53 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class HitStopper : Singleton<HitStopper>
 {
-    private float speed;
-    private bool restoreTime;
+    public Volume bloomVolume;
+    private Bloom bloom;
 
     private void Start()
     {
-        restoreTime = false;
-    }
-
-    private void Update()
-    {
-        if(restoreTime)
+        if (bloomVolume.profile.TryGet<Bloom>(out bloom))
         {
-            if(Time.timeScale < 1f)
-            {
-                Time.timeScale += Time.deltaTime * speed;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-                restoreTime = false;
-            }
+            //bloom.intensity.value = 500;
         }
     }
 
-    public void StopTime(float changingTime, int restoreSpeed, float delay) 
+    public void StopTime(float changingTime, float delay) 
     {
-        speed = restoreSpeed;
+        StartCoroutine(StartTimeAgain(changingTime, delay));
+    }
 
-        if(delay > 0f)
-        {
-            StopCoroutine(StartTimeAgain(delay));
-            StartCoroutine(StartTimeAgain(delay));
-        }
-        else
-        {
-            restoreTime = true;
-        }
-
+    IEnumerator StartTimeAgain(float changingTime, float delay)
+    {
         Time.timeScale = changingTime;
-    }
-
-    IEnumerator StartTimeAgain(float amount)
-    {
-        yield return new WaitForSeconds(amount);
-        restoreTime = true;
+        bloom.intensity.value += 20f;
+        yield return new WaitForSecondsRealtime(delay);
+        Time.timeScale = 1f;
+        bloom.intensity.value -= 20f;
     }
 }

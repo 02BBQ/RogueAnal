@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 15.0f; // 이동 속도 조절 변수
+    public float moveSpeed = 10f; // 이동 속도 조절 변수
     private Rigidbody rb;
     private Animator animator;
     private AudioSource audioSource;
@@ -27,7 +27,8 @@ public class Movement : MonoBehaviour
 
         Vector3 direction = Vector3.ClampMagnitude(new Vector3(moveX, 0.0f, moveZ), 1f);// * Time.deltaTime;
         animator.SetFloat("Walking", direction.magnitude);
-        rb.velocity = (direction * moveSpeed * moveMultiple) ;
+        //rb.velocity = (direction * moveSpeed * moveMultiple) ;
+        rb.AddForce(direction*moveSpeed*moveMultiple*Time.deltaTime*500);
 
         if(Input.GetMouseButton(0))
         {

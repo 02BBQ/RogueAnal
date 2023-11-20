@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d725633f07ac64dab4a8bcd77b2806, type: 3}
   m_Name: TheWeak
   m_EditorClassIdentifier: 
-  Health: 5
+  Health: 3
   AIUpdateInterval: 0.1
   Acceleration: 8
   AngularSpeed: 240
@@ -26,4 +26,4 @@ MonoBehaviour:
   StoppingDistance: 1
   Prefab: {fileID: 1124524325609202809, guid: 8b412b04d2bb86c45a1cd2970eaccca5, type: 3}
   Chance: 33.4
-  _weight: 104.20000457763672
+  _weight: 113.30000305175781

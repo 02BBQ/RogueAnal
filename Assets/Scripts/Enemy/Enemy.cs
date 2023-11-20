@@ -8,7 +8,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public NavMeshAgent agent;
     public EnemySO enemySO;
 
-    public float MaxHealth;
+    public Material defaultMaterial;
+    public Material cum;
+
+    private float MaxHealth;
 
     public float Health;
     //{
@@ -18,17 +21,25 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public double _weight;
     public float Chance = 100f;
 
+    private void Awake()
+    {
+        //defaultMaterial = matSO.def;
+        //cum = matSO.cum;
+    }
+
     public virtual void OnEnable()
     {
         SetUpAgentFromConfig();
     }
+
     public void OnDisable()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public virtual void SetUpAgentFromConfig()
     {
+        if (!(bool)enemySO) return;
         agent.acceleration = enemySO.Acceleration;
         agent.angularSpeed = enemySO.AngularSpeed;
         agent.areaMask = enemySO.AreaMask;
@@ -51,6 +62,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void Damage(float amount)
     {
         Health -= amount;
+
+        if (GetComponentInChildren<SpriteRenderer>())
+        {
+            GameManager.Instance.whiteWashing(gameObject);
+        }
+
         if (Health<=0)
         {
             Die();
@@ -60,5 +77,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         PoolManager.Release(gameObject);
+        if(gameObject.GetComponent<LootDrop>()) gameObject.GetComponent<LootDrop>().Drop();
     }
 }

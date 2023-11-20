@@ -1,0 +1,25 @@
+.bigger {
+    flex-basis: 25%;
+    height: 80%;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-image: url('project://database/Assets/Sprites/%EC%9E%94%EC%9E%94%ED%95%9C%EB%AC%BC%EA%B2%B0.png?fileID=21300000&guid=13d9f722081e79d4d98becf1efc274fe&type=3#잔잔한물결');
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.asdasd {
+    align-items: center;
+    justify-content: center;
+}
+
+.labelStyle {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    white-space: normal;
+    flex-shrink: 1;
+}
+
+.unity-button {
+    -unity-text-align: upper-center;
+}
