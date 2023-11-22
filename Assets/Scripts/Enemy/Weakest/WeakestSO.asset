@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d725633f07ac64dab4a8bcd77b2806, type: 3}
   m_Name: WeakestSO
   m_EditorClassIdentifier: 
-  Health: 5
+  Health: 3
   AIUpdateInterval: 0.1
   Acceleration: 8
   AngularSpeed: 120
@@ -22,8 +22,8 @@ MonoBehaviour:
   Height: 2
   ObstacleAvoidanceType: 2
   Radius: 0.5
-  Speed: 3
+  Speed: 2
   StoppingDistance: 2
   Prefab: {fileID: 1124524325609202809, guid: ac4d4984ab6e5dd41a5f569fbd90fe56, type: 3}
   Chance: 79.9
-  _weight: 79.9000015258789
+  _weight: 140.10000228881836

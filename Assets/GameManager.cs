@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class GameManager : Singleton<GameManager>
     public Material cum;
 
     private int money = 0;
+
+    public static float BuffVal = 1;
+
+    [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject GameOverUI;
     public int Money
     {
         get { return money; }
@@ -16,6 +22,7 @@ public class GameManager : Singleton<GameManager>
             uiManager.Init();
         }
     }
+    public int Killed = 0;
 
     public UIManager uiManager;
 
@@ -31,5 +38,12 @@ public class GameManager : Singleton<GameManager>
         renderer.material = cum;
         yield return new WaitForSeconds(.1f);
         renderer.material = defaulMaterial;
+    }
+
+    public void GameOver()
+    {
+        GameUI.SetActive(false);
+        GameOverUI.SetActive(true);
+        print("OK I WILL");
     }
 }

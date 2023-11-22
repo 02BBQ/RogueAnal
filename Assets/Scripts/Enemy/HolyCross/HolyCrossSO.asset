@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d725633f07ac64dab4a8bcd77b2806, type: 3}
   m_Name: HolyCrossSO
   m_EditorClassIdentifier: 
-  Health: 5
+  Health: 3
   AIUpdateInterval: 0.1
   Acceleration: 8
   AngularSpeed: 120
@@ -22,8 +22,8 @@ MonoBehaviour:
   Height: 2
   ObstacleAvoidanceType: 2
   Radius: 0.5
-  Speed: 3
+  Speed: 3.6000001
   StoppingDistance: 2
   Prefab: {fileID: 1124524325609202809, guid: 0e5aa96e2d345444ab1f64aff366f773, type: 3}
   Chance: 11.8
-  _weight: 157.7000026702881
+  _weight: 151.90000247955322

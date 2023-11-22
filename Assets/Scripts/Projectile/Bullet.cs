@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private GameObject deathFX;
+    [SerializeField] private GameObject hitFX;
     public float lifetime = 1f;
 
     public float Damage = 1f;
@@ -17,7 +16,7 @@ public class Bullet : MonoBehaviour
             if (c.CompareTag("Player")) return;
             c.GetComponent<IDamageable>().Damage(Damage);
             PhysicsManager.Instance.ApplyKnockback(c.GetComponent<Rigidbody>(), (new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z) - transform.position).normalized, 7.5f) ;
-            PoolManager.Release(gameObject);
+            PoolManager.Get(hitFX, transform.position, Quaternion.identity);
             Release();
         }
     }
@@ -25,18 +24,19 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         lifetime = Player.Instance.range;
-        CancelInvoke("DestructAuto");
-        Invoke("DestructAuto", lifetime);
+        StopAllCoroutines();
+        StartCoroutine("DestructAuto", lifetime);
     }
 
-    public void DestructAuto()
+    IEnumerator DestructAuto(float lifetime)
     {
+        yield return new WaitForSeconds(lifetime);
         Release();
     }
     
     private void Release()
     {
-        CancelInvoke("DestructAuto");
+        StopAllCoroutines();
         PoolManager.Get(deathFX, transform.position, Quaternion.identity);
         PoolManager.Release(gameObject);
     }

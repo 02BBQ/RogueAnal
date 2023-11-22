@@ -20,11 +20,24 @@ public class Enemy : MonoBehaviour, IDamageable
     //}
     [HideInInspector] public double _weight;
     public float Chance = 100f;
+    [SerializeField] private GameObject deathFX;
 
     private void Awake()
     {
-        //defaultMaterial = matSO.def;
-        //cum = matSO.cum;
+        agent.acceleration = enemySO.Acceleration;
+        agent.angularSpeed = enemySO.AngularSpeed;
+        agent.areaMask = enemySO.AreaMask;
+        agent.avoidancePriority = enemySO.AvoidancePriority;
+        agent.baseOffset = enemySO.BaseOffset;
+        agent.height = enemySO.Height;
+        agent.obstacleAvoidanceType = enemySO.ObstacleAvoidanceType;
+        agent.radius = enemySO.Radius;
+        agent.speed = enemySO.Speed;
+        agent.stoppingDistance = enemySO.StoppingDistance;
+
+        MaxHealth = enemySO.Health;
+        Health = MaxHealth;
+        SetUpAgentFromConfig();
     }
 
     public virtual void OnEnable()
@@ -39,24 +52,25 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void SetUpAgentFromConfig()
     {
-        if (!(bool)enemySO) return;
-        agent.acceleration = enemySO.Acceleration;
-        agent.angularSpeed = enemySO.AngularSpeed;
-        agent.areaMask = enemySO.AreaMask;
-        agent.avoidancePriority = enemySO.AvoidancePriority;
-        agent.baseOffset = enemySO.BaseOffset;
-        agent.height = enemySO.Height;
-        agent.obstacleAvoidanceType = enemySO.ObstacleAvoidanceType;
-        agent.radius = enemySO.Radius;
         agent.speed = enemySO.Speed;
-        agent.stoppingDistance = enemySO.StoppingDistance;
 
         MaxHealth = enemySO.Health;
         Health = MaxHealth;
 
+        print(GameManager.BuffVal);
+        if (GameManager.BuffVal > 1)
+        {
+            agent.speed = enemySO.Speed * (1 + GameManager.BuffVal / 3);
+
+            MaxHealth *= GameManager.BuffVal;
+            Health = MaxHealth;
+        }
+
+
         _weight = enemySO._weight;
 
         Chance = enemySO.Chance;
+
     }
 
     public virtual void Damage(float amount)
@@ -76,7 +90,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
-        PoolManager.Release(gameObject);
         if(gameObject.GetComponent<LootDrop>()) gameObject.GetComponent<LootDrop>().Drop();
+        if (deathFX != null) PoolManager.Get(deathFX, transform.position, Quaternion.identity);;
+        GameManager.Instance.Killed++;
+        PoolManager.Release(gameObject);
     }
 }

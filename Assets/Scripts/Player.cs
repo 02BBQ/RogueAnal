@@ -24,7 +24,7 @@ public class Player : Singleton<Player>, IDamageable
 
     [SerializeField] private GameObject damaged;
 
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Transform canvas;
     [SerializeField] private GameObject heart;
 
     [Header("Audio")]
@@ -78,7 +78,7 @@ public class Player : Singleton<Player>, IDamageable
     private void HealthBarUpdate()
     {
         int currentHearts = Mathf.CeilToInt(Health); // 현재 체력에 맞는 하트의 수
-        int childCount = canvas.transform.childCount; // 현재 캔버스에 있는 하트 아이콘의 수
+        int childCount = canvas.childCount; // 현재 캔버스에 있는 하트 아이콘의 수
 
         // 필요한 하트 수를 확인하고, 부족하면 추가하거나 초과하면 제거
         if (currentHearts < childCount)
@@ -87,7 +87,7 @@ public class Player : Singleton<Player>, IDamageable
             for (int i = 0; i < childCount - currentHearts; i++)
             {
                 // 가장 마지막 하트부터 제거
-                PoolManager.Release(canvas.transform.GetChild(canvas.transform.childCount - 1).gameObject);
+                PoolManager.Release(canvas.GetChild(canvas.childCount - 1).gameObject);
             }
         }
         else if (currentHearts > childCount)
@@ -96,7 +96,7 @@ public class Player : Singleton<Player>, IDamageable
             for (int i = 0; i < currentHearts - childCount; i++)
             {
                 // 하트 추가
-                GameObject dick = PoolManager.Get(heart, canvas.transform);
+                GameObject dick = PoolManager.Get(heart, canvas);
                 dick.GetComponent<RectTransform>().localScale = Vector3.one;
             }
         }
@@ -170,6 +170,9 @@ public class Player : Singleton<Player>, IDamageable
             transform.position = origin + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             yield return time;
         }
+        rbSprite.enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
 }

@@ -29,11 +29,6 @@ public class Movement : MonoBehaviour
         animator.SetFloat("Walking", direction.magnitude);
         //rb.velocity = (direction * moveSpeed * moveMultiple) ;
         rb.AddForce(direction*moveSpeed*moveMultiple*Time.deltaTime*500);
-
-        if(Input.GetMouseButton(0))
-        {
-            CinemachineShake.Instance.ShakeCamera(15, .05f);    
-        }
     }
 
     //public void OnFootStep(bool right)

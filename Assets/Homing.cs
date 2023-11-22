@@ -20,12 +20,19 @@ public class Homing : MonoBehaviour
 
     void FixedUpdate()
     {
-        var heading = _target.position - transform.position;
+        try
+        {
+            var heading = _target.position - transform.position;
 
-        var rotation = Quaternion.LookRotation(heading);
-        _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
+            var rotation = Quaternion.LookRotation(heading);
+            _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
 
-        _rb.velocity = transform.forward * _speed;
+            _rb.velocity = transform.forward * _speed;
+        }
+        catch
+        {
+            print("Can't Find Player");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

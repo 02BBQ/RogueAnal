@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 71230702295548511}
   - component: {fileID: 1053775631901287440}
   - component: {fileID: 6780524313594523587}
+  - component: {fileID: 9180979042555705028}
   m_Layer: 7
   m_Name: HolyCross
   m_TagString: Untagged
@@ -120,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1053775631901287440}
   enemySO: {fileID: 11400000, guid: 2484d9d500610e64598491d320c01989, type: 2}
+  defaultMaterial: {fileID: 0}
+  cum: {fileID: 0}
   Health: 3
   _weight: 0
   Chance: 100
@@ -127,6 +130,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Bullet: {fileID: 4693529029039513426, guid: c0b2aeb5403dbf447a4c3f42ec6bedf6, type: 3}
+--- !u!114 &9180979042555705028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124524325609202809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa06310fe17507742b6b7390871d11e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxMoney: 7
+  moneyPrefab: {fileID: 2459997371514181102, guid: 115f3201bb6fbd945ae18faec07fbd78,
+    type: 3}
 --- !u!1 &7209222558646527158
 GameObject:
   m_ObjectHideFlags: 0

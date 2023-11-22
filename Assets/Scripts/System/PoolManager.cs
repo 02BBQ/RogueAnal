@@ -117,6 +117,11 @@ public static class PoolManager
         pool.Clear();
     }
 
+    internal static void Get(object deathFX, Vector3 position, Quaternion identity)
+    {
+        throw new NotImplementedException();
+    }
+
     private class Pool<T> where T : Object
     {
         private readonly Dictionary<T, T> _prefabs = new();

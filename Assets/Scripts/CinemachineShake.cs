@@ -21,6 +21,10 @@ public class CinemachineShake : MonoBehaviour
         CinemachineBasicMultiChannelPerlin perlin = _cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
         perlin.m_AmplitudeGain += intensity;
+        if (time < shakeTimer)
+        {
+            StopAllCoroutines(); return;
+        }
         shakeTimer = time;
     }
 
@@ -33,14 +37,18 @@ public class CinemachineShake : MonoBehaviour
     }
     IEnumerator Shaker()
     {
-        while (shakeTimer >= 0)
+        CinemachineBasicMultiChannelPerlin perlin = _cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
+        while (shakeTimer > 0)
         {
-            if(Time.timeScale>0f)
-                shakeTimer -= Time.deltaTime* Time.timeScale;
+            if (Time.timeScale > 0f)
+            {
+                shakeTimer -= Time.deltaTime * Time.timeScale;
+                //perlin.m_AmplitudeGain -= Time.deltaTime * Time.timeScale;
+            }
+                
             yield return null;
         }
         //timeover as fuck
-        CinemachineBasicMultiChannelPerlin perlin = _cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
         perlin.m_AmplitudeGain = 0f;
     }

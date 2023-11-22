@@ -5008,9 +5008,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1053775631901287440}
   enemySO: {fileID: 11400000, guid: 632484cb333c2a043a27b2d348837c82, type: 2}
+  defaultMaterial: {fileID: 0}
+  cum: {fileID: 0}
   Health: 6
   _weight: 0
   Chance: 100
+  deathFX: {fileID: 9091601150019238355, guid: 84fd9733c55a6d448a990ee98f8fcf37, type: 3}
   hitbox: {fileID: 7966063599765850795}
   OnAttack:
     m_PersistentCalls:

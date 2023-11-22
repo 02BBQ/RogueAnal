@@ -128,6 +128,7 @@ MonoBehaviour:
   Health: 5
   _weight: 0
   Chance: 100
+  deathFX: {fileID: 9091601150019238355, guid: 84fd9733c55a6d448a990ee98f8fcf37, type: 3}
   hitbox: {fileID: 3055387323468042027}
   OnAttack:
     m_PersistentCalls:
