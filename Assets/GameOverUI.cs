@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -27,5 +28,15 @@ public class GameOverUI : MonoBehaviour
         {
             Debug.LogError($"err : {ex}");
         }
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Lobby()
+    {
+        SceneManager.LoadScene(0);
     }
 }

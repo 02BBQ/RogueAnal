@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\uB2C8\uBE68\uB77C\uC9D0"
   m_EditorClassIdentifier: 
   Chance: 51.7
-  _weight: 198.79999923706055
+  _weight: 225.19999837875366
   Desc: this make me fast
-  Amount: 0.3
+  Amount: 0.2

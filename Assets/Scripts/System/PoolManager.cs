@@ -208,7 +208,11 @@ public static class PoolManager
                 }
             }
 
-            if (gameObject != null) gameObject.SetActive(false); gameObject.transform.SetParent(null);
+            if (gameObject != null)
+            {
+                gameObject.SetActive(false); 
+                try { gameObject.transform.SetParent(null); } catch { }
+            }
             _stacks[prefab].Push(obj);
         }
 

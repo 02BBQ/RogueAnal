@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Super Human
   m_EditorClassIdentifier: 
   Chance: 19.3
-  _weight: 228.09999883174896
+  _weight: 181.09999752044678
   Desc: Heal u small and Make u stronger
   SpeedAmount: 0
   AtkSpeedAmount: 0
   RangeAmount: 0
   BulletSpeedAmount: 0
-  DamageAmount: 0.5
-  HealAmount: 1.5
+  DamageAmount: 0.34
+  HealAmount: 1

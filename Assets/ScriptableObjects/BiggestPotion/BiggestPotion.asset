@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6492e1d5ac7af954db5cee1e91b14eff, type: 3}
-  m_Name: BigPotion
+  m_Name: BiggestPotion
   m_EditorClassIdentifier: 
-  Name: BigPotion
-  Prefab: {fileID: 3352156660903778666, guid: c9c4bc9f9fab55348b607926842cbb5d, type: 3}
+  Name: BiggestPotion
+  Prefab: {fileID: 3352156660903778666, guid: dcb48ff73771c214ebdbf9364197556c, type: 3}
   weight: 25
-  chance: 25
-  price: 20
-  healthRecovery: 0
+  chance: 15
+  price: 25
+  healthRecovery: 2
   maxHealthRecovery: 1
   soundEffect: {fileID: 0}

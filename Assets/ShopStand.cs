@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShopStand : MonoBehaviour
@@ -18,6 +19,7 @@ public class ShopStand : MonoBehaviour
         currSO = shopManager.GetRandomEnemyIndex();
         curr = PoolManager.Get(currSO.Prefab,transform.position + Vector3.up, Quaternion.identity);
         curr.transform.SetParent(transform,true);
+        transform.Find("Canvas/Text").GetComponent<TextMeshProUGUI>().text = $"${currSO.price}";
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +38,7 @@ public class ShopStand : MonoBehaviour
         {
             try
             {
-                PoolManager.Release(curr);
+                Destroy(curr);
             }
             catch { }
         }

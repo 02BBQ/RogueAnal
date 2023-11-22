@@ -30,6 +30,7 @@ public class Player : Singleton<Player>, IDamageable
     [Header("Audio")]
     private AudioSource audioSource;
     [SerializeField] private AudioClip Hit;
+    [SerializeField] private AudioClip Shot;
 
     [Header("Stat")]
     public float MaxHealth;
@@ -132,6 +133,7 @@ public class Player : Singleton<Player>, IDamageable
 
     private void Attack(Vector3 shootDirection)
     {
+        audioSource.PlayOneShot(Shot);
         GameObject cum = PoolManager.Get(bullet, transform.position, Quaternion.identity);
         cum.GetComponent<Bullet>().lifetime = range;
         cum.GetComponent<Bullet>().Damage = dmg;

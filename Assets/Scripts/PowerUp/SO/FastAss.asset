@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FastAss
   m_EditorClassIdentifier: 
   Chance: 39
-  _weight: 148.20000076293945
+  _weight: 39
   Desc: Increase ur shootSpeed so so.
-  Amount: 0.25
+  Amount: 0.125

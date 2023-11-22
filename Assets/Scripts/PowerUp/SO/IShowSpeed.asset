@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892aa2377acbeeb4e878cff746b64df2, type: 3}
   m_Name: IShowSpeed
   m_EditorClassIdentifier: 
-  Chance: 14.7
-  _weight: 228.09999883174896
-  Desc: "\uCD1D\uC54C\uC758 \uB77C\uC774\uD504\uD0C0\uC784\uC744 \uC904\uC774\uACE0
-    \uB51C\uC774 \uC62C\uB77C\uAC10"
+  Chance: 7.1
+  _weight: 53.69999980926514
+  Desc: "\uBE60\uB978\uAC74 \uB2E4\uBE68\uB77C\uC9D0"
   SpeedAmount: 0.1
   AtkSpeedAmount: 0.15
-  RangeAmount: 0
+  RangeAmount: -0.25
   BulletSpeedAmount: 0.125
-  DamageAmount: 0.5
+  DamageAmount: -0.25
   HealAmount: 0

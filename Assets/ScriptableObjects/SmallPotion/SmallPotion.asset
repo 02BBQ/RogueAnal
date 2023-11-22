@@ -16,7 +16,7 @@ MonoBehaviour:
   Prefab: {fileID: 7676135029581309643, guid: e7c09cf5d7f07104fb82d68100f8ec80, type: 3}
   weight: 0
   chance: 75
-  price: 8
+  price: 6
   healthRecovery: 2
   maxHealthRecovery: 0
   soundEffect: {fileID: 0}
