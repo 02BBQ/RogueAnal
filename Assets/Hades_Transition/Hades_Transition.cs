@@ -33,6 +33,4 @@ public class Hades_Transition : Singleton<Hades_Transition> {
         targetValue = 1f;
         print("EGG");
     }
-
-
 }

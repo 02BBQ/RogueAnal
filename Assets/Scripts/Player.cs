@@ -52,6 +52,12 @@ public class Player : Singleton<Player>, IDamageable
         }
     }
 
+    [Header("Skill")]
+    [SerializeField] private GameObject coin;
+    private bool coinCD = false;
+
+    System.Random rand = new System.Random();
+
     private void Start()
     {
         Health = MaxHealth;
@@ -124,11 +130,36 @@ public class Player : Singleton<Player>, IDamageable
         shootDirection = Vector3.ClampMagnitude(new Vector3(moveX, 0.0f, moveZ), 1f);
         atkTimer += Time.deltaTime;
 
-        if (shootDirection != Vector3.zero && atkTimer >= .4f/atkSpeed && state != State.Dead)  // 방향키가 눌린 경우
+        if (shootDirection != Vector3.zero && atkTimer >= .4f / atkSpeed && state != State.Dead)  // 방향키가 눌린 경우
         {
             atkTimer = 0f;
             Attack(shootDirection);
         }
+        if (Input.GetKeyDown(KeyCode.Q) && !coinCD && state != State.Dead && GameManager.Instance.Money >= 7)  // 방향키가 눌린 경우
+        {
+            GameManager.Instance.Money -= 7;
+            atkTimer = 0f;
+            StartCoroutine(LuckyCoin7());
+        }
+    }
+
+    IEnumerator LuckyCoin7()
+    {
+        coinCD = true;
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject go = PoolManager.Get(coin);
+            go.transform.position = transform.position + Vector3.up * 1.5f;
+            go.GetComponent<Rigidbody>().AddForce(new Vector3(doubleRandom(), doubleRandom(), doubleRandom()), ForceMode.Impulse);
+            yield return new WaitForSeconds(.05f);
+        }
+        yield return new WaitForSeconds(7f);
+        coinCD = false;
+    }
+
+    private float doubleRandom()
+    {
+        return rand.NextDouble() * Random.Range(0, 2) == 0 ? -1 : 1;
     }
 
     private void Attack(Vector3 shootDirection)
@@ -167,7 +198,7 @@ public class Player : Singleton<Player>, IDamageable
         }
         Vector3 origin = transform.position;
         var time = new WaitForSeconds(.0001f);
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 50; i++)
         {
             transform.position = origin + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             yield return time;
@@ -177,4 +208,5 @@ public class Player : Singleton<Player>, IDamageable
         GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
+
 }

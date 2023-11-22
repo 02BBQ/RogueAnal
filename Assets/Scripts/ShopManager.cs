@@ -32,4 +32,19 @@ public class ShopManager : MonoBehaviour
 
         return null;
     }
+    private void OnEnable()
+    {
+        foreach (Transform go in transform)
+        {
+            go.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (Transform go in transform)
+        {
+            go.gameObject.SetActive(false);
+        }
+    }
 }

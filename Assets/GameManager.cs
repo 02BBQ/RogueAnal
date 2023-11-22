@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Material cum;
 
-    private int money = 0;
+    private int money = 100;
 
     public static float BuffVal = 1;
 
@@ -46,4 +46,5 @@ public class GameManager : Singleton<GameManager>
         GameOverUI.SetActive(true);
         print("OK I WILL");
     }
+
 }

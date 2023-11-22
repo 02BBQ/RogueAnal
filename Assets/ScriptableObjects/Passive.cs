@@ -10,7 +10,7 @@ public class Passive : MonoBehaviour
     
     public void Active()
     {
-        if(itemSO != null)
+        if(itemSO == null)
         {
             throw new NotImplementedException("ItemSO NOT ASSIGNED"); 
         }

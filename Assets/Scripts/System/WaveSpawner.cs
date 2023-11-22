@@ -59,6 +59,9 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     [SerializeField] private GameObject shop;
 
+    [SerializeField] private AudioSource globalSound;
+    [SerializeField] private AudioClip loopd;
+
     private void Start()
     {
         if (globalVolume.profile.TryGet<ChromaticAberration>(out chromaticAberration))
@@ -121,6 +124,8 @@ public class WaveSpawner : Singleton<WaveSpawner>
         }
         teleport = false;
         PowerUped?.Invoke();
+        DOTween.To(() => chromaticAberration.intensity.value, x => chromaticAberration.intensity.value = x, 1, .15f).SetEase(Ease.OutQuad).OnComplete(() => DOTween.To(() => chromaticAberration.intensity.value, x => chromaticAberration.intensity.value = x, 0, .4f).SetEase(Ease.InQuad));
+        DOTween.To(() => lensDistortion.intensity.value, x => lensDistortion.intensity.value = x, .7f, .25f).SetEase(Ease.OutQuad).OnComplete(() => DOTween.To(() => lensDistortion.intensity.value, x => lensDistortion.intensity.value = x, 0, .6f).SetEase(Ease.InQuad));
         CinemachineShake.Instance.ShakeCamera(5, 11);
         Hades_Transition.Instance.targetValue = 1f;
         yield return new WaitForSeconds(.5f);
@@ -144,6 +149,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
                 CurrentWave = 0;
                 enemyCount = 2;
                 prestigeLoop = true;
+                globalSound.PlayOneShot(loopd);
             }
             BuffEnemies();
             CinemachineShake.Instance.ShakeCamera(30f, 2);
@@ -180,7 +186,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
             StartCoroutine(DoWave());
             prestigeLoop = false;
         }
-        ShopChance += 7.77777f + Mathf.PI * noShopInARow;
+        ShopChance += 7.7777f + Mathf.PI * noShopInARow;
     }
 
     private void OnTransformChildrenChanged()
@@ -219,6 +225,4 @@ public class WaveSpawner : Singleton<WaveSpawner>
             enemy._weight = accumulatedWeights;
         }
     }
-
-    
 }

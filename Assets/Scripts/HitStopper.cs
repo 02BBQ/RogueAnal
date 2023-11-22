@@ -30,4 +30,5 @@ public class HitStopper : Singleton<HitStopper>
         Time.timeScale = 1f;
         bloom.intensity.value -= 20f;
     }
+
 }

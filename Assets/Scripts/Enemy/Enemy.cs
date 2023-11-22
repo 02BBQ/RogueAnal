@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviour, IDamageable
         MaxHealth = enemySO.Health;
         Health = MaxHealth;
 
-        print(GameManager.BuffVal);
         if (GameManager.BuffVal > 1)
         {
             agent.speed = enemySO.Speed * (1 + GameManager.BuffVal / 3);
