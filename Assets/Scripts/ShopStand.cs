@@ -9,6 +9,10 @@ public class ShopStand : MonoBehaviour
     public GameObject curr;
     public ItemSO currSO;
 
+    public RectTransform movingObject;
+    public TMP_Text Name;
+    public TMP_Text desc;
+
     [SerializeField] GameObject buy;
 
     private void Awake()
@@ -37,9 +41,11 @@ public class ShopStand : MonoBehaviour
         PoolManager.Release(curr);
         HitStopper.Instance.StopTime(0, .25f);
         CinemachineShake.Instance.ShakeCamera(15, .7f);
+        movingObject.gameObject.SetActive(false);
     }
     private void OnDisable()
     {
+        movingObject.gameObject.SetActive(false);
         if (curr != null) 
         {
             try
@@ -48,5 +54,22 @@ public class ShopStand : MonoBehaviour
             }
             catch { }
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        movingObject.gameObject.SetActive(true);
+        Name.text = currSO.Name;
+        desc.text = currSO.Desc;
+    }
+    private void OnMouseOver()
+    {
+        Vector3 pos = Input.mousePosition;
+        pos.z = 0;
+        movingObject.position = pos;
+    }
+    private void OnMouseExit()
+    {
+        movingObject.gameObject.SetActive(false);
     }
 }

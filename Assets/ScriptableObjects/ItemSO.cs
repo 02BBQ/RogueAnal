@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     public string Name;
+    public string Desc;
     public GameObject Prefab;
 
     public float weight = 0;

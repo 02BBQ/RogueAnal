@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SmallPotion
   m_EditorClassIdentifier: 
   Name: SmallPotion
+  Desc: +2 Health
   Prefab: {fileID: 7676135029581309643, guid: e7c09cf5d7f07104fb82d68100f8ec80, type: 3}
   weight: 0
   chance: 75

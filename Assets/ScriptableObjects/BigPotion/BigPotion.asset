@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BigPotion
   m_EditorClassIdentifier: 
   Name: BigPotion
+  Desc: +1 MaxHealth
   Prefab: {fileID: 3352156660903778666, guid: c9c4bc9f9fab55348b607926842cbb5d, type: 3}
   weight: 25
   chance: 25

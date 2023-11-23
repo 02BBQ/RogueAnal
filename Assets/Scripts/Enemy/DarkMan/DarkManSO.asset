@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d725633f07ac64dab4a8bcd77b2806, type: 3}
-  m_Name: WeakestSO
+  m_Name: DarkManSO
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 2
   AIUpdateInterval: 0.1
   Acceleration: 8
   AngularSpeed: 120
@@ -22,8 +22,8 @@ MonoBehaviour:
   Height: 2
   ObstacleAvoidanceType: 2
   Radius: 0.5
-  Speed: 2
-  StoppingDistance: 0.5
-  Prefab: {fileID: 1124524325609202809, guid: ac4d4984ab6e5dd41a5f569fbd90fe56, type: 3}
-  Chance: 79.9
+  Speed: 11
+  StoppingDistance: 1
+  Prefab: {fileID: 1124524325609202809, guid: 4f8e8bdc4cb634349be541952dbd9bf1, type: 3}
+  Chance: 16.8
   _weight: 140.10000228881836

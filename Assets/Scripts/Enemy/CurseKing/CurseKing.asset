@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d725633f07ac64dab4a8bcd77b2806, type: 3}
-  m_Name: WeakestSO
+  m_Name: CurseKing
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 4
   AIUpdateInterval: 0.1
   Acceleration: 8
-  AngularSpeed: 120
+  AngularSpeed: 240
   AreaMask: 1
   AvoidancePriority: 50
   BaseOffset: 0.3
   Height: 2
   ObstacleAvoidanceType: 2
   Radius: 0.5
-  Speed: 2
+  Speed: 2.5
   StoppingDistance: 0.5
-  Prefab: {fileID: 1124524325609202809, guid: ac4d4984ab6e5dd41a5f569fbd90fe56, type: 3}
-  Chance: 79.9
-  _weight: 140.10000228881836
+  Prefab: {fileID: 1124524325609202809, guid: cccdb0a1a0d3e394fb0aaa1c9a1baaaf, type: 3}
+  Chance: 11.1
+  _weight: 183.8000020980835
