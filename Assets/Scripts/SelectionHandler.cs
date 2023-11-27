@@ -1,16 +1,8 @@
 using Assets.Scripts.PowerUp;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
-using UnityEngine.XR;
-using Random = UnityEngine.Random;
 
 public class SelectionHandler : MonoBehaviour
 {
